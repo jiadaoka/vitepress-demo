@@ -1,0 +1,89 @@
+$namespace: 'jia-vitepress-demo';
+
+@function getCssVarName($name) {
+    @return --#{$namespace}-#{$name};
+}
+
+@function getCssVar($name) {
+    @return var(getCssVarName($name));
+}
+
+$border: 1px solid getCssVar(border-color);
+$border-radius: 6px;
+$padding: 20px;
+
+$font-size: 14px;
+$color: #333;
+$color-active: #409eff;
+
+$transition-time: 0.3s;
+$transition-function: ease-in-out;
+
+:root {
+    #{getCssVarName(border-color)}: #dcdfe6;
+}
+
+.#{$namespace} {
+    border-radius: $border-radius;
+    border: $border;
+
+    & + .#{$namespace} {
+        margin-top: 30px;
+    }
+
+    .example-box {
+        padding: $padding;
+        border-bottom: $border;
+    }
+
+    .example {
+        all: initial;
+    }
+
+    .source-code-box {
+        & [class*='language-'] {
+            margin: 0;
+            border-radius: 0;
+
+            // button.copy {
+            //     display: none;
+
+            //     & + span.lang {
+            //         opacity: 1;
+            //     }
+            // }
+        }
+    }
+
+    .fold-btn {
+        cursor: pointer;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        span {
+            font-size: 12px;
+            color: $color;
+        }
+
+        &:hover {
+            span {
+                color: $color-active;
+            }
+        }
+    }
+
+    .#{$namespace}__transition-leave-active,
+    .#{$namespace}__transition-enter-active {
+        overflow: hidden;
+        transition: $transition-time max-height $transition-function, $transition-time padding-top $transition-function, $transition-time padding-bottom $transition-function;
+    }
+
+    .#{$namespace}__transition-enter-from,
+    .#{$namespace}__transition-leave-to {
+        padding-top: 0;
+        padding-bottom: 0;
+        max-height: 0;
+    }
+}
