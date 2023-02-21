@@ -32,7 +32,9 @@ export default defineConfig({
         }),
         nodeResolve(),
         commonjs(),
-        typescript(),
+        typescript({
+            useTsconfigDeclarationDir: true,
+        }),
         vue(),
         postcss(),
         terser(),
