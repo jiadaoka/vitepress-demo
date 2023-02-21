@@ -33,10 +33,10 @@ function handleStyle(option: Option) {
 
     if (Array.isArray(option.cssUrl)) {
         obj.url = option.cssUrl.map((url) => {
-            return normalizePath(relative(getGlobPath, getResolvePath(process.cwd(), url)))
+            return normalizePath(relative(__dirname, getResolvePath(process.cwd(), url)))
         })
     } else if (typeof option.cssUrl === "string") {
-        obj.url = [normalizePath(relative(getGlobPath, getResolvePath(process.cwd(), option.cssUrl)))]
+        obj.url = [normalizePath(relative(__dirname, getResolvePath(process.cwd(), option.cssUrl)))]
     }
 
     return obj
@@ -73,7 +73,7 @@ function jiaDemoConfig(md: MarkdownIt, option: Option = {}) {
             const sourceCode = render("```vue\n" + fileContext + "\n```", env)
             const demoDir = dirname(fullPath)
             const fileName = posix.basename(fullPath)
-            const relativePath = normalizePath(relative(getGlobPath, fullPath)) // 获取glob使用的相对路径
+            const relativePath = normalizePath(relative(__dirname, fullPath)) // 获取glob使用的相对路径
 
             const endReg = new RegExp(`(\\/?>)`)
             const appendAttr = [

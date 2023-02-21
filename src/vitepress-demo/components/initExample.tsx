@@ -1,8 +1,10 @@
 import { createApp, defineAsyncComponent, type AppContext } from "vue"
 import exampleRoot from "./exampleRoot.vue"
 // docs/node_modules/@panda-jia/vitepress-demo/dist
-const fileList = import.meta.glob(["./../../../../../**/*.vue", "!**/src/vitepress-demo", "!**/lib", "!**/dist"])
-const styleFileList = import.meta.glob(["./../../../../../**/*.(scss|sass|css|less|styl|stylus)", "!**/src/vitepress-demo", "!**/lib", "!**/dist"], { query: { inline: true } })
+const fileList = import.meta.glob(["./../../../../**/*.vue", "!**/src/vitepress-demo", "!**/lib", "!**/dist", "!**/System Volume Information"])
+const styleFileList = import.meta.glob(["./../../../../**/*.(scss|sass|css|less|styl|stylus)", "!**/src/vitepress-demo", "!**/lib", "!**/dist", "!**/System Volume Information"], {
+    query: { inline: true },
+})
 
 async function initStyle(styleObj: { style: string; url: string[] }, root: ShadowRoot) {
     const reg = /:root.*?\}/gms

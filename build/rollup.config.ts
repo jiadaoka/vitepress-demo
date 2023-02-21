@@ -18,7 +18,7 @@ export default defineConfig({
         {
             dir: "dist",
             format: "es",
-            entryFileNames: (chunk) => `[name]/index.js`,
+            entryFileNames: (chunk) => `[name].js`,
             globals: {
                 vue: "Vue",
                 vite: "Vite",
@@ -37,6 +37,6 @@ export default defineConfig({
         }),
         vue(),
         postcss(),
-        terser(),
+        // terser(),
     ],
 })

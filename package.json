@@ -18,16 +18,17 @@
         "type": "git",
         "url": "https://github.com/jiadaoka/vitepress-demo"
     },
-    "main": "./dist/plugin/index.js",
-    "module": "./dist/plugin/index.js",
+    "main": "./dist/plugin.js",
+    "module": "./dist/plugin.js",
     "exports": {
         "./plugin": {
-            "import": "./dist/plugin/index.js"
+            "import": "./dist/plugin.js"
         },
         "./component": {
-            "import": "./dist/component/index.js"
+            "import": "./dist/component.js"
         }
     },
+    "types": "./types",
     "peerDependencies": {
         "vite": "^4.1.1",
         "vue": "^3.2.47"
