@@ -1,6 +1,13 @@
 # 更新日志 
 
 
+### [0.0.2-2](https://github.com/jiadaoka/vitepress-demo/compare/v0.0.2-1...v0.0.2-2) (2023-02-21)
+
+
+### 🐛 Bug Fixes | Bug 修复
+
+* **functions:** 处理获取不到文件的情况 ([4a1b6f4](https://github.com/jiadaoka/vitepress-demo/commit/4a1b6f4fe0b9e4cf8f5883749bfacba4ed81a6f2))
+
 ### [0.0.2-1](https://github.com/jiadaoka/vitepress-demo/compare/v0.0.2-0...v0.0.2-1) (2023-02-21)
 
 
