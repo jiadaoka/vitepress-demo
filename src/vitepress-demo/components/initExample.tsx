@@ -1,8 +1,8 @@
 import { createApp, defineAsyncComponent, type AppContext } from "vue"
 import exampleRoot from "./exampleRoot.vue"
 // docs/node_modules/@panda-jia/vitepress-demo/dist
-const fileList = import.meta.glob(["./../../../../**/*.vue", "!**/src/vitepress-demo", "!**/lib", "!**/dist", "!**/System Volume Information"])
-const styleFileList = import.meta.glob(["./../../../../**/*.(scss|sass|css|less|styl|stylus)", "!**/src/vitepress-demo", "!**/lib", "!**/dist", "!**/System Volume Information"], {
+const fileList = import.meta.glob(["./../../../../**/*.vue", "!**/src/vitepress-demo", "!**/node_modules", "!**/lib", "!**/dist", "!**/System Volume Information"])
+const styleFileList = import.meta.glob(["./../../../../**/*.(scss|sass|css|less|styl|stylus)", "!**/src/vitepress-demo", "!**/node_modules", "!**/lib", "!**/dist", "!**/System Volume Information"], {
     query: { inline: true },
 })
 

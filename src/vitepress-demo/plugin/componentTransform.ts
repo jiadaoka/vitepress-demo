@@ -10,11 +10,13 @@ interface Option {
     cssUrl?: string | string[]
 }
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
+const cwd = process.cwd()
+
+// const __filename = fileURLToPath(import.meta.url)
+const __dirname = cwd + "/node_modules/@panda-jia/vitepress-demo/dist" // 处理Pnpm的目录情况
 
 const getResolvePath = (root: string, file: string) => resolve(root, `.vitepress`, file)
-const getGlobPath = resolve(__dirname, "../components/") // 调用import.meta.glob的文件
+// const getGlobPath = resolve(__dirname, "../components/") // 调用import.meta.glob的文件
 
 function handleStyle(option: Option) {
     const obj: {
