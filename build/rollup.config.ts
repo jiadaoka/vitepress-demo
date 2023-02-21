@@ -37,6 +37,6 @@ export default defineConfig({
         }),
         vue(),
         postcss(),
-        // terser(),
+        terser(),
     ],
 })
