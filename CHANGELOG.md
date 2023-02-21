@@ -1,6 +1,13 @@
 # 更新日志 
 
 
+### [0.0.2](https://github.com/jiadaoka/vitepress-demo/compare/v0.0.2-5...v0.0.2) (2023-02-21)
+
+
+### 🐛 Bug Fixes | Bug 修复
+
+* **other:** 能正常获取文件，开启构建压缩 ([dbb0a4b](https://github.com/jiadaoka/vitepress-demo/commit/dbb0a4bd13e72bcd4f11f3f6b1584c07bf0474f7))
+
 ### [0.0.2-5](https://github.com/jiadaoka/vitepress-demo/compare/v0.0.2-2...v0.0.2-5) (2023-02-21)
 
 
