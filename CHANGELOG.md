@@ -1,6 +1,13 @@
 # 更新日志 
 
 
+### [0.1.1-0](https://github.com/jiadaoka/vitepress-demo/compare/v0.1.0...v0.1.1-0) (2023-02-22)
+
+
+### 📝 Documentation | 文档
+
+* **other:** 补充README.md文档 ([96c64f0](https://github.com/jiadaoka/vitepress-demo/commit/96c64f08f68bf1242ddac5b551b6b161f6aa0ae8))
+
 ## [0.1.0](https://github.com/jiadaoka/vitepress-demo/compare/v0.0.2-5...v0.1.0) (2023-02-21)
 
 
