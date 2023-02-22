@@ -100,4 +100,19 @@ interface Option {
 
     import.meta.glob 在 pnpm link 和从 npm 安装包是两个结果。
 
+3.  声明文件由于采用 exports 分包导致无法正常生效。
+
+    可以向向 global.d.ts 添加以下代码。
+
+```TypeScript
+declare module '@panda-jia/vitepress-demo/plugin' {
+    export * from '@panda-jia/vitepress-demo/types/plugin/main'
+}
+
+declare module '@panda-jia/vitepress-demo/component' {
+    export * from '@panda-jia/vitepress-demo/types/components/index.vue'
+}
+
+```
+
 ... 待补充
