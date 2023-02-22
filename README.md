@@ -22,6 +22,8 @@ npm install @panda-jia/vitepress-demo
 
 ## 使用
 
+### Markdown 解析插件
+
 在 .vitepress/config 内注册 Markdown 解析插件
 
 ```JavaScript
@@ -42,6 +44,8 @@ export default {
 }
 ```
 
+### DEMO 组件
+
 在 .vitepress/theme/index 内注册 DEMO 组件
 
 ```JavaScript
@@ -54,6 +58,12 @@ export default {
         app.component('demo', DemoPreview)
     },
 }
+```
+
+在 Markdown 文件中使用
+
+```vue
+<demo path="../../../src/components/button/index.vue"></demo>
 ```
 
 ### componentTransform 配置

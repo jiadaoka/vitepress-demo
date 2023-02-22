@@ -6,7 +6,8 @@
         "demo",
         "preview",
         "vitepress-demo",
-        "shadowDom"
+        "shadowDom",
+        "shadow DOM"
     ],
     "type": "module",
     "scripts": {
@@ -22,13 +23,15 @@
     "module": "./dist/plugin.js",
     "exports": {
         "./plugin": {
-            "import": "./dist/plugin.js"
+            "import": "./dist/plugin.js",
+            "types": "./types/plugin/main.d.ts"
         },
         "./component": {
-            "import": "./dist/component.js"
+            "import": "./dist/component.js",
+            "types": "./types/components/index.vue.d.ts"
         }
     },
-    "types": "./types",
+    "types": "./types/plugin/main.d.ts",
     "peerDependencies": {
         "vite": "^4.1.1",
         "vue": "^3.2.47"
