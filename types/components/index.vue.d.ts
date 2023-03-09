@@ -1,69 +1,61 @@
 declare const _default: import("vue").DefineComponent<{
-    sourceCode: {
-        type: StringConstructor;
-        required: true;
-    };
-    exampleCode: {
-        type: StringConstructor;
-        required: true;
-    };
     path: {
         type: StringConstructor;
         required: true;
     };
-    fullPath: {
+    __sourceCode: {
         type: StringConstructor;
         required: true;
     };
-    envDir: {
+    __exampleCode: {
         type: StringConstructor;
         required: true;
     };
-    name: {
+    __fullPath: {
         type: StringConstructor;
         required: true;
     };
-    relativePath: {
+    __exampleDemo: {
+        type: null;
+        required: true;
+    };
+    __exampleGlobalStyle: {
         type: StringConstructor;
         required: true;
     };
-    exampleGlobalStyle: {
-        type: StringConstructor;
+    __exampleGlobalStyleFile: {
+        type: ArrayConstructor;
         required: true;
     };
 }, (_ctx: any, _cache: any) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
     [key: string]: any;
 }>, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
-    sourceCode: {
-        type: StringConstructor;
-        required: true;
-    };
-    exampleCode: {
-        type: StringConstructor;
-        required: true;
-    };
     path: {
         type: StringConstructor;
         required: true;
     };
-    fullPath: {
+    __sourceCode: {
         type: StringConstructor;
         required: true;
     };
-    envDir: {
+    __exampleCode: {
         type: StringConstructor;
         required: true;
     };
-    name: {
+    __fullPath: {
         type: StringConstructor;
         required: true;
     };
-    relativePath: {
+    __exampleDemo: {
+        type: null;
+        required: true;
+    };
+    __exampleGlobalStyle: {
         type: StringConstructor;
         required: true;
     };
-    exampleGlobalStyle: {
-        type: StringConstructor;
+    __exampleGlobalStyleFile: {
+        type: ArrayConstructor;
         required: true;
     };
 }>>, {}>;

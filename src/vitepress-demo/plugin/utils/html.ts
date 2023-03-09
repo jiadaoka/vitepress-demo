@@ -1,11 +1,18 @@
 /**
+ * 获取匹配html片段的正则
+ * @param tagName
+ * @returns
+ */
+const htmlReg = (tagName: string) => new RegExp(`<${tagName}(>|\\s).*?(<\\/${tagName}>|\\/>)`, 'ig')
+
+/**
  * 获取需要的标签字符串列表
  * @param htmlStr
  * @param tagName
  * @returns
  */
 export function getHtmlTag(htmlStr: string, tagName: string): string[] {
-    const reg = new RegExp(`<${tagName}(>|\\s).*(<\\/${tagName}>|\\/>)`, 'ig')
+    const reg = htmlReg(tagName)
     const match = htmlStr.match(reg)
 
     return match ?? []

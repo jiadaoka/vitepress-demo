@@ -13,6 +13,7 @@
     "scripts": {
         "dev": "vite",
         "build": "vue-tsc && rollup --configPlugin typescript --config build/rollup.config.ts",
+        "watch": "rollup --configPlugin typescript --config build/rollup.config.ts -w",
         "release": "standard-version --release-as patch"
     },
     "repository": {

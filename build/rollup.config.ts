@@ -46,4 +46,7 @@ export default defineConfig({
         postcss(),
         terser(),
     ],
+    watch: {
+        buildDelay: 1000,
+    },
 })

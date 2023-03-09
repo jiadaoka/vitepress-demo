@@ -5,12 +5,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, getCurrentInstance } from 'vue'
-import { initVueDemo } from './initExample'
+import { ref, onMounted, getCurrentInstance, type Component, type AsyncComponentLoader } from 'vue'
+import { initVueDemo, generateShadowDom } from './initExample'
 
 interface Props {
-    relativePath: string
+    exampleDemo: AsyncComponentLoader<Component>
     exampleGlobalStyle: string
+    exampleGlobalStyleFile: Promise<any>[]
 }
 
 const props = defineProps<Props>()
@@ -19,15 +20,9 @@ const { appContext } = getCurrentInstance()!
 
 onMounted(() => {
     const shadowResult = generateShadowDom(exampleHost.value!)
-    initVueDemo(shadowResult, props.relativePath, appContext, props.exampleGlobalStyle)
+    initVueDemo(shadowResult, props.exampleDemo, appContext, {
+        style: props.exampleGlobalStyle,
+        import: props.exampleGlobalStyleFile,
+    })
 })
-
-function generateShadowDom(host: Element): ShadowResult {
-    const shadowRoot = host.attachShadow({ mode: 'closed' })
-    const rootDom = document.createElement('div')
-    rootDom.id = 'shadowRoot'
-
-    shadowRoot.append(rootDom)
-    return { shadowRoot, rootDom }
-}
 </script>

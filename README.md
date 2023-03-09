@@ -27,7 +27,8 @@ npm install @panda-jia/vitepress-demo
 在 .vitepress/config 内注册 Markdown 解析插件
 
 ```JavaScript
-import { componentTransform } from '@panda-jia/vitepress-demo/plugin'
+import demoTransform from '@panda-jia/vitepress-demo/plugin'
+// import { componentTransform } from '@panda-jia/vitepress-demo/plugin'
 
 export default {
     markdown: {
@@ -90,29 +91,8 @@ interface Option {
 
     shadow DOM 内部公共样式配置。
 
-## 已知缺陷
+## 问题
 
-1.  一些 UI 库的组件对 shadow DOM 没做 UI 适配，会出现组件无法正常使用的情况。
+[已知问题解答][1]
 
-    不确定是否会处理，这个可以通过让组件适配 shadow DOM 解决。
-
-2.  动态获取组件存在目录过深获取不到的情况。
-
-    import.meta.glob 在 pnpm link 和从 npm 安装包是两个结果。
-
-3.  声明文件由于采用 exports 分包导致无法正常生效。
-
-    可以向向 global.d.ts 添加以下代码。
-
-```TypeScript
-declare module '@panda-jia/vitepress-demo/plugin' {
-    export * from '@panda-jia/vitepress-demo/types/plugin/main'
-}
-
-declare module '@panda-jia/vitepress-demo/component' {
-    export * from '@panda-jia/vitepress-demo/types/components/index.vue'
-}
-
-```
-
-... 待补充
+[1]: ./question.md
