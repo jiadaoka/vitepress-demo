@@ -1,6 +1,18 @@
 # 更新日志 
 
 
+## [0.2.0-0](https://github.com/jiadaoka/vitepress-demo/compare/v0.1.1-1...v0.2.0-0) (2023-03-10)
+
+
+### ♻ Code Refactoring | 代码重构
+
+* **funcionts|components:** 重构代码逻辑 ([57f18a5](https://github.com/jiadaoka/vitepress-demo/commit/57f18a576bc39d21ad4c8e973747bc5a468c5f43))
+
+
+### ✨ Features | 新功能
+
+* **functions:** 兼容组件名驼峰法与中划线法 ([16a1a1b](https://github.com/jiadaoka/vitepress-demo/commit/16a1a1b4b4fc84c115349479e751369022e1d889))
+
 ### [0.1.1-1](https://github.com/jiadaoka/vitepress-demo/compare/v0.1.1-0...v0.1.1-1) (2023-02-22)
 
 
