@@ -1,3 +1,4 @@
+export declare const handleTagName: (tagName: string) => string[];
 /**
  * 获取需要的标签字符串列表
  * @param htmlStr
@@ -11,4 +12,4 @@ export declare function getHtmlTag(htmlStr: string, tagName: string): string[];
  * @param tagName
  * @returns
  */
-export declare function getTagAttrMap(htmlStr: string, tagName: string): Map<string, string>;
+export declare function getTagAttrMap(htmlStr: string): Map<string, string>;

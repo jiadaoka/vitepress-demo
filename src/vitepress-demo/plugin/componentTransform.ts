@@ -1,13 +1,23 @@
 import type MarkdownIt from 'markdown-it'
 import { dirname } from 'path'
-import { getHtmlTag, getTagAttrMap, getFullPath, getFileContext, handleStyle } from './utils/index'
+import { getHtmlTag, getTagAttrMap, getFullPath, getFileContext, handleStyle, handleTagName } from './utils/index'
 
 const cwd = process.cwd()
 
 function handleComponent(md: MarkdownIt, option: Option = {}) {
     const render = md.render
     const defaultHtmlInlineRender = md.renderer.rules.html_inline!
-    const componentName = option.componentName ?? 'demo'
+
+    let camelComponentName = 'demo'
+    let kebabComponentName = ''
+
+    if (option.componentName) {
+        const names = handleTagName(option.componentName)
+        camelComponentName = names[0]
+
+        if (names[0] !== names[1]) kebabComponentName = names[1]
+    }
+
     const styleObj = handleStyle(option, cwd)
 
     md.renderer.rules.html_inline = (tokens, idx, options, env, self) => {
@@ -16,7 +26,9 @@ function handleComponent(md: MarkdownIt, option: Option = {}) {
         let context = token.content
         let matchHtml: string[] = []
         if (context) {
-            matchHtml = getHtmlTag(context, componentName)
+            matchHtml = getHtmlTag(context, camelComponentName)
+
+            if (kebabComponentName) matchHtml.push(...getHtmlTag(context, kebabComponentName))
         }
 
         if (matchHtml.length) {
@@ -25,7 +37,7 @@ function handleComponent(md: MarkdownIt, option: Option = {}) {
 
             for (let i = 0; i < len; i++) {
                 const demo = matchHtml[i]
-                const attrMap = getTagAttrMap(demo, componentName)
+                const attrMap = getTagAttrMap(demo)
 
                 if (attrMap.has(':path')) {
                     throw new Error('[jiaDemoConfig -> md.render]path不可为响应式入参')
