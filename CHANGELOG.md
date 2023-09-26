@@ -1,6 +1,13 @@
 # 更新日志 
 
 
+## [0.2.0-1](https://github.com/jiadaoka/vitepress-demo/compare/v0.2.0-0...v0.2.0-1) (2023-09-26)
+
+
+### ✨ Features | 新功能
+
+* 重整项目结构调整打包结果 ([ade4f16](https://github.com/jiadaoka/vitepress-demo/commit/ade4f163e0c7e1b829b4b1643acf567dc98d5bba))
+
 ## [0.2.0-0](https://github.com/jiadaoka/vitepress-demo/compare/v0.1.1-1...v0.2.0-0) (2023-03-10)
 
 
