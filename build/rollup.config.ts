@@ -1,52 +1,67 @@
 import { defineConfig } from 'rollup'
-import alias from '@rollup/plugin-alias'
 import nodeResolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
-import typescript from 'rollup-plugin-typescript2'
 import vue from '@vitejs/plugin-vue'
 import postcss from 'rollup-plugin-postcss'
 import replace from '@rollup/plugin-replace'
-import terser from '@rollup/plugin-terser'
+import esbuild from 'rollup-plugin-esbuild'
+import dts from 'rollup-plugin-dts'
 
-export default defineConfig({
-    input: {
-        component: './src/vitepress-demo/components/index.vue',
-        plugin: './src/vitepress-demo/plugin/main.ts',
-    },
-    external: ['vue', 'vite'],
-    output: [
-        {
-            dir: 'dist',
-            format: 'es',
-            entryFileNames: (chunk) => `[name].js`,
-            globals: {
-                vue: 'Vue',
-                vite: 'Vite',
-            },
-        },
-    ],
-    plugins: [
-        alias(),
-        replace({
-            preventAssignment: true,
-        }),
-        nodeResolve(),
-        commonjs(),
-        typescript({
-            check: false,
-            useTsconfigDeclarationDir: true,
-            tsconfigOverride: {
-                compilerOptions: {
-                    declaration: true,
-                    declarationDir: './types',
+const input = {
+    component: './src/components/index.ts',
+    plugin: './src/plugin/main.ts',
+}
+
+const external = ['vue', 'vite']
+
+const plugins = [
+    replace({
+        preventAssignment: true,
+    }),
+    nodeResolve(),
+    commonjs(),
+    esbuild(),
+    vue(),
+    postcss(),
+]
+
+const watch = {
+    buildDelay: 1000,
+}
+
+export default defineConfig([
+    {
+        input,
+        external,
+        output: [
+            {
+                dir: 'dist',
+                format: 'es',
+                entryFileNames: (chunk) => `[name].js`,
+                globals: {
+                    vue: 'Vue',
+                    vite: 'Vite',
                 },
             },
-        }),
-        vue(),
-        postcss(),
-        terser(),
-    ],
-    watch: {
-        buildDelay: 1000,
+        ],
+        plugins: plugins,
+        watch,
     },
-})
+    {
+        input,
+        external,
+        output: [
+            {
+                dir: 'dist',
+                format: 'es',
+                entryFileNames: (chunk) => `[name].d.ts`,
+                globals: {
+                    vue: 'Vue',
+                    vite: 'Vite',
+                },
+            },
+        ],
+        plugins: [...plugins, dts()],
+        watch,
+    },
+])

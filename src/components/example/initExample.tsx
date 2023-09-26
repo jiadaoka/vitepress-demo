@@ -1,28 +1,34 @@
-import { createApp, defineAsyncComponent, type AppContext, type Component, type AsyncComponentLoader } from 'vue'
+import { createApp, defineAsyncComponent, inject, type AppContext, type Component, type AsyncComponentLoader } from 'vue'
 import exampleRoot from './exampleRoot.vue'
+import { beforeMountSymbol } from '../var'
+import type { ShadowResult, StyleSet } from '../../declare/component'
 
 /**
  * 创建shadowDom
  * @param host
  * @returns
  */
-export function generateShadowDom(host: Element): ShadowResult {
+export function generateShadowDom(host: Element, styleObj: StyleSet): ShadowResult {
     const shadowRoot = host.attachShadow({ mode: 'closed' })
     const rootDom = document.createElement('div')
     rootDom.id = 'shadowRoot'
 
+    initStyle(shadowRoot, styleObj)
     shadowRoot.append(rootDom)
     return { shadowRoot, rootDom }
 }
 
-export async function initVueDemo(shadowResult: ShadowResult, component: Component, mainApp: AppContext, styleObj: StyleSet) {
-    await initStyle(shadowResult.shadowRoot, styleObj)
-
+export function initVueDemo(shadowResult: ShadowResult, component: Component, mainApp: AppContext) {
     const app = createApp(exampleRoot)
     // 将mainApp的组件注册进内部
     Object.entries(mainApp.components).forEach(([key, comp]) => {
         app.component(key, comp)
     })
+
+    const beforeMount = inject(beforeMountSymbol)
+    if (typeof beforeMount === 'function') {
+        beforeMount(app, shadowResult.shadowRoot, shadowResult.rootDom)
+    }
 
     app.component('exampleDemo', defineAsyncComponent((() => component) as AsyncComponentLoader<Component>))
     app.mount(shadowResult.rootDom)
@@ -37,7 +43,7 @@ export async function initVueDemo(shadowResult: ShadowResult, component: Compone
  */
 async function initStyle(root: ShadowRoot, styleObj: StyleSet) {
     // :root变量需要提升
-    const reg = /:root.*?\}/gms
+    const reg = /(\:root|\@font\-face).*?\}/gms
     const rootStyle = []
 
     const styleList: HTMLStyleElement[] = []

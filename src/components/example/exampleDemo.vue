@@ -19,10 +19,10 @@ const exampleHost = ref<Element>()
 const { appContext } = getCurrentInstance()!
 
 onMounted(() => {
-    const shadowResult = generateShadowDom(exampleHost.value!)
-    initVueDemo(shadowResult, props.exampleDemo, appContext, {
+    const shadowResult = generateShadowDom(exampleHost.value!, {
         style: props.exampleGlobalStyle,
         import: props.exampleGlobalStyleFile,
     })
+    initVueDemo(shadowResult, props.exampleDemo, appContext)
 })
 </script>

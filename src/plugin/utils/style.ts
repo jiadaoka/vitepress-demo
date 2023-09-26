@@ -1,8 +1,20 @@
-import { resolve } from 'path'
+import type { pluginOption, StyleSet } from '../../declare/plugin'
+import { resolve, isAbsolute } from 'path'
 import { normalizePath } from 'vite'
-const getResolvePath = (root: string, file: string) => normalizePath(resolve(root, `.vitepress`, file))
+const getResolvePath = (root: string, file: string) => {
+    let p = file
+    if (!isAbsolute(p)) {
+        const reg = /^\.{1,2}/
+        if (reg.test(p)) {
+            p = resolve(root, `.vitepress`, file)
+        } else {
+            p = resolve(root, `node_modules`, file)
+        }
+    }
+    return normalizePath(p)
+}
 
-export function handleStyle(option: Option, cwd: string) {
+export function handleStyle(option: pluginOption, cwd: string) {
     const obj: StyleSet = {
         style: '',
         import: [],

@@ -1,10 +1,11 @@
+import type { pluginOption } from '../declare/plugin'
 import type MarkdownIt from 'markdown-it'
-import { dirname } from 'path'
+import { dirname, parse } from 'path'
 import { getHtmlTag, getTagAttrMap, getFullPath, getFileContext, handleStyle, handleTagName } from './utils/index'
 
 const cwd = process.cwd()
 
-function handleComponent(md: MarkdownIt, option: Option = {}) {
+function handleComponent(md: MarkdownIt, option: pluginOption = {}) {
     const render = md.render
     const defaultHtmlInlineRender = md.renderer.rules.html_inline!
 
@@ -55,14 +56,21 @@ function handleComponent(md: MarkdownIt, option: Option = {}) {
 
                 const endReg = new RegExp(`(\\/?>)`)
 
+                // 直接覆写
                 const appendAttr = [
-                    ['__source-code', encodeURIComponent(sourceCode)],
-                    ['__example-code', encodeURIComponent(fileContext)],
-                    ['__full-path', fullPath],
-                    [':__example-demo', `import('${fullPath}')`],
-                    ['__example-global-style', encodeURIComponent(JSON.stringify(styleObj.style))],
-                    [':__example-global-style-file', `[${styleObj.import.join(',')}]`],
+                    ['source-code', encodeURIComponent(sourceCode)],
+                    ['example-code', encodeURIComponent(fileContext)],
+                    ['full-path', fullPath],
+                    ['example-global-style', encodeURIComponent(JSON.stringify(styleObj.style))],
+                    [':example-demo', `import('${fullPath}')`],
+                    [':example-global-style-file', `[${styleObj.import.join(',')}]`],
                 ]
+
+                // 已设置则跳过
+                if (!attrMap.has(':name') && !attrMap.has('name')) {
+                    const fileName = parse(attrPath).name
+                    appendAttr.push(['name', fileName])
+                }
 
                 const replaceDemo = demo.replace(endReg, (m) => {
                     const append = appendAttr.reduce((str, [key, value]) => {

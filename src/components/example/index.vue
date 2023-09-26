@@ -1,8 +1,8 @@
 <template>
     <ClientOnly>
         <div class="jia-vitepress-demo">
-            <exampleDemo :example-demo="props.__exampleDemo" :example-global-style="props.__exampleGlobalStyle" :example-global-style-file="props.__exampleGlobalStyleFile" />
-            <sourceCode :visible="visibleCode" :source-code="props.__sourceCode" />
+            <exampleDemo :example-demo="props.exampleDemo" :example-global-style="props.exampleGlobalStyle" :example-global-style-file="props.exampleGlobalStyleFile" />
+            <sourceCode :visible="visibleCode" :source-code="props.sourceCode" />
             <div class="fold-btn" @click="clickFoldColor">
                 <span>{{ foldText }}</span>
             </div>
@@ -11,18 +11,20 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, type Component, type AsyncComponentLoader } from 'vue'
+import type { Component, AsyncComponentLoader } from 'vue'
+import { ref, computed } from 'vue'
 
 import exampleDemo from './exampleDemo.vue'
 import sourceCode from './sourceCode.vue'
 interface Props {
+    name: string
     path: string
-    __sourceCode: string
-    __exampleCode: string
-    __fullPath: string
-    __exampleDemo: AsyncComponentLoader<Component>
-    __exampleGlobalStyle: string
-    __exampleGlobalStyleFile: Promise<any>[]
+    sourceCode: string
+    exampleCode: string
+    fullPath: string
+    exampleDemo: AsyncComponentLoader<Component>
+    exampleGlobalStyle: string
+    exampleGlobalStyleFile: Promise<any>[]
 }
 
 const props = defineProps<Props>()
@@ -30,7 +32,7 @@ const props = defineProps<Props>()
 let visibleCode = ref(false)
 
 const foldText = computed(() => {
-    return visibleCode.value ? '展开代码' : '收起代码'
+    return visibleCode.value ? '收起代码' : '展开代码'
 })
 
 function clickFoldColor() {

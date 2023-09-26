@@ -22,22 +22,35 @@
     },
     "main": "./dist/plugin.js",
     "module": "./dist/plugin.js",
+    "types": "./dist/plugin.d.ts",
     "exports": {
+        ".": {
+            "import": "./dist/plugin.js",
+            "types": "./dist/plugin.d.ts"
+        },
         "./plugin": {
             "import": "./dist/plugin.js",
-            "types": "./types/plugin/main.d.ts"
+            "types": "./dist/plugin.d.ts"
         },
         "./component": {
             "import": "./dist/component.js",
-            "types": "./types/components/index.vue.d.ts"
+            "types": "./dist/component.d.ts"
         }
     },
-    "types": "./types/plugin/main.d.ts",
+    "typesVersions": {
+        "*": {
+            "*": [
+                "./dist/*",
+                "./*"
+            ]
+        }
+    },
     "peerDependencies": {
         "vite": "^4.1.1",
         "vue": "^3.2.47"
     },
     "dependencies": {
+        "remixicon": "^3.2.0",
         "sass": "^1.57.1"
     },
     "devDependencies": {
@@ -45,20 +58,19 @@
         "@rollup/plugin-commonjs": "^24.0.1",
         "@rollup/plugin-node-resolve": "^15.0.1",
         "@rollup/plugin-replace": "^5.0.2",
-        "@rollup/plugin-terser": "^0.4.0",
-        "@rollup/plugin-typescript": "^11.0.0",
+        "@rollup/plugin-typescript": "^11.1.4",
         "@types/markdown-it": "^12.2.3",
         "@types/node": "^18.11.18",
         "@types/vue": "^2.0.0",
         "@vitejs/plugin-vue": "^4.0.0",
         "cz-customizable": "^7.0.0",
-        "rollup": "^3.15.0",
-        "rollup-plugin-copy": "^3.4.0",
-        "rollup-plugin-polyfill-node": "^0.12.0",
+        "esbuild": "^0.19.3",
+        "rollup": "^3.29.3",
+        "rollup-plugin-dts": "^6.0.2",
+        "rollup-plugin-esbuild": "^6.0.1",
         "rollup-plugin-postcss": "^4.0.2",
-        "rollup-plugin-typescript2": "^0.34.1",
         "typescript": "^4.9.3",
-        "vite": "^4.1.2",
+        "vite": "^4.3.8",
         "vue-tsc": "^1.0.11"
     },
     "config": {
