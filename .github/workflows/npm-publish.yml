@@ -6,8 +6,7 @@ name: 构建发包
 # 触发工作流的事件
 on:
   release:
-    tags:
-      - v*
+    types: [published]
 
 # 执行构建流程
 jobs:
