@@ -1,6 +1,8 @@
 # 更新日志 
 
 
+## [0.2.0-2](https://github.com/jiadaoka/vitepress-demo/compare/v0.2.0-1...v0.2.0-2) (2023-10-07)
+
 ## [0.2.0-1](https://github.com/jiadaoka/vitepress-demo/compare/v0.2.0-0...v0.2.0-1) (2023-09-26)
 
 
