@@ -5,7 +5,7 @@ on:
     # 有新tag时触发
     push:
         tags:
-            - v*
+            - v**
 
     # 允许手动触发
     workflow_dispatch:
