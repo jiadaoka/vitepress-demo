@@ -1,6 +1,13 @@
 # 更新日志 
 
 
+## [0.2.0-4](https://github.com/jiadaoka/vitepress-demo/compare/v0.2.0-3...v0.2.0-4) (2023-10-17)
+
+
+### 👷‍ Build System | 构建
+
+* 更新pnpm-lock ([7baef57](https://github.com/jiadaoka/vitepress-demo/commit/7baef571cbc8163aa1c4f20bd4afb83fac514c67))
+
 ## [0.2.0-3](https://github.com/jiadaoka/vitepress-demo/compare/v0.2.0-2...v0.2.0-3) (2023-10-17)
 
 ## [0.2.0-2](https://github.com/jiadaoka/vitepress-demo/compare/v0.2.0-1...v0.2.0-2) (2023-10-07)
